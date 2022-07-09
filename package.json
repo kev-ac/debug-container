@@ -1,0 +1,24 @@
+{
+  "name": "debug-container",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "test-container",
+    "rest",
+    "docker",
+    "debug"
+  ],
+  "author": {
+    "name" : "kev-ac",
+    "url" : "https://github.com/kev-ac"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.1"
+  }
+}
