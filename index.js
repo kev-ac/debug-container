@@ -2,6 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = process.env.PORT ?? 3000;
+const exposeEnv = Boolean(process.env.EXPOSE_ENV ?? false);
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -16,13 +17,14 @@ app.all('*', (req, res) => {
     headers: req.headers,
     body: req.body,
     cookies: req.cookies,
+    env: exposeEnv ? process.env : undefined,
   };
 
   res.json(data);
 });
 
 const server = app.listen(port, () => {
-  console.log(`Testing container listening on port ${port}`);
+  console.log(`Testing container listening on port ${port}${exposeEnv ? " with exposed environment variables." : ""}`);
 });
 
 const handleShutdown = (event) => {
